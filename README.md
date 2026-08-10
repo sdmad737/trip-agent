@@ -42,24 +42,27 @@ The agent can:
 
 ## Architecture
 
+## 🧠 Architecture
+
 ```mermaid
 flowchart TD
-    A["Streamlit UI<br/>Destination · Days · Pace<br/>Interests · Constraints"]
-    B["OpenAI Travel Agent<br/>Responses API + Tool Calling"]
+    A["Streamlit UI<br/>Trip inputs"]
+    B["OpenAI Travel Agent<br/>Tool calling"]
 
-    C["search_pois"]
-    D["retrieve_guides"]
+    C["POI Search"]
+    D["Guide Retrieval"]
 
     E["Nominatim<br/>Geocoding"]
-    F["Overpass API<br/>OpenStreetMap POIs"]
+    F["Overpass API<br/>OSM POIs"]
 
     G["Wikivoyage"]
-    H["TF-IDF Retrieval"]
+    H["TF-IDF<br/>Retrieval"]
 
-    I["Tool State<br/>POIs · Guide Context · Execution Trace"]
-    J["Structured Itinerary"]
-    K["POI Validation"]
-    L["Interactive UI<br/>Map · Refinement · Feedback · Export"]
+    I["Tool State<br/>POIs + Guide Context + Trace"]
+
+    J["Structured<br/>Itinerary"]
+    K["POI<br/>Validation"]
+    L["Interactive UI<br/>Map + Refine + Feedback + Export"]
 
     A --> B
 
