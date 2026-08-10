@@ -44,23 +44,22 @@ The agent can:
 
 ```mermaid
 flowchart TD
-    A["Streamlit UI<br/>Trip inputs"]
-    B["OpenAI Travel Agent<br/>Tool calling"]
+    A[Streamlit UI]
+    B[OpenAI Travel Agent]
 
-    C["POI Search"]
-    D["Guide Retrieval"]
+    C[POI Search]
+    D[Guide Retrieval]
 
-    E["Nominatim<br/>Geocoding"]
-    F["Overpass API<br/>OSM POIs"]
+    E[Nominatim]
+    F[Overpass API]
 
-    G["Wikivoyage"]
-    H["TF-IDF<br/>Retrieval"]
+    G[Wikivoyage]
+    H[TF-IDF Retrieval]
 
-    I["Tool State<br/>POIs + Guide Context + Trace"]
-
-    J["Structured<br/>Itinerary"]
-    K["POI<br/>Validation"]
-    L["Interactive UI<br/>Map + Refine + Feedback + Export"]
+    I[Tool State]
+    J[Structured Itinerary]
+    K[POI Validation]
+    L[Interactive UI]
 
     A --> B
 
@@ -81,6 +80,14 @@ flowchart TD
     J --> K
     K --> L
 ```
+
+- **Streamlit UI:** destination, trip length, pace, interests, and constraints
+- **OpenAI Travel Agent:** Responses API with function calling
+- **POI Search:** Nominatim geocoding + Overpass/OpenStreetMap POIs
+- **Guide Retrieval:** Wikivoyage + TF-IDF retrieval
+- **Tool State:** stores POIs, guide context, and execution traces
+- **Validation:** ensures itinerary locations correspond to retrieved POIs
+- **Interactive UI:** map, refinement, feedback, and export
 
 ## Example Use Case
 
