@@ -1,4 +1,4 @@
-# TripAgent
+# ✈️ TripAgent 
 
 An agentic AI travel planner that researches real-world points of interest,
 retrieves destination context, and generates structured multi-day itineraries.
@@ -42,47 +42,43 @@ The agent can:
 
 ## Architecture
 
-```text
-┌───────────────────────────────┐
-│         Streamlit UI          │
-│                               │
-│ Destination / Days / Pace     │
-│ Interests / Constraints       │
-└───────────────┬───────────────┘
-                │
-                ▼
-┌───────────────────────────────┐
-│        OpenAI Agent           │
-│                               │
-│ Tool Calling + Reasoning      │
-└───────────────┬───────────────┘
-                │
-        ┌───────┴────────┐
-        │                │
-        ▼                ▼
-┌──────────────┐   ┌────────────────┐
-│ search_pois  │   │ retrieve_guides│
-└──────┬───────┘   └───────┬────────┘
-       │                    │
-   ┌───┴────┐               ▼
-   │        │           Wikivoyage
-   ▼        ▼               │
-Nominatim  Overpass         ▼
-Geocoder     API         TF-IDF
-   │        │               │
-   └────┬───┘               │
-        └────────┬───────────┘
-                 ▼
-             Tool State
-                 │
-                 ▼
-       Structured Itinerary
-                 │
-                 ▼
-           POI Validation
-                 │
-                 ▼
-       UI + Interactive Map
+```mermaid
+flowchart TD
+    A["Streamlit UI<br/>Destination · Days · Pace<br/>Interests · Constraints"]
+    B["OpenAI Travel Agent<br/>Responses API + Tool Calling"]
+
+    C["search_pois"]
+    D["retrieve_guides"]
+
+    E["Nominatim<br/>Geocoding"]
+    F["Overpass API<br/>OpenStreetMap POIs"]
+
+    G["Wikivoyage"]
+    H["TF-IDF Retrieval"]
+
+    I["Tool State<br/>POIs · Guide Context · Execution Trace"]
+    J["Structured Itinerary"]
+    K["POI Validation"]
+    L["Interactive UI<br/>Map · Refinement · Feedback · Export"]
+
+    A --> B
+
+    B --> C
+    B --> D
+
+    C --> E
+    C --> F
+
+    D --> G
+    G --> H
+
+    E --> I
+    F --> I
+    H --> I
+
+    I --> J
+    J --> K
+    K --> L
 ```
 
 ## Example Use Case
