@@ -42,8 +42,6 @@ The agent can:
 
 ## Architecture
 
-## 🧠 Architecture
-
 ```mermaid
 flowchart TD
     A["Streamlit UI<br/>Trip inputs"]
